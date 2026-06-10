@@ -62,16 +62,16 @@
         }
 
         .hero-title {
-            font-size: 5rem;
-            font-weight: 800;
-            letter-spacing: 8px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            text-shadow: 0 0 20px rgba(0, 0, 0, 0.6), 0 0 40px rgba(124, 58, 237, 0.5);
-            background: linear-gradient(135deg, #ffffff, #c084fc, #a855f7);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+    font-size: 5rem;
+        font-weight: 800;
+        letter-spacing: 8px;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        text-shadow: 0 0 20px rgba(0, 0, 0, 0.5), 0 0 40px rgba(46, 125, 50, 0.3);
+        background: linear-gradient(135deg, #e8d5a3, #c9ae5c, #6b8c42);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
         }
 
         .hero-subtitle {
@@ -87,26 +87,38 @@
 
         /* Кнопка */
         .hero-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 14px 40px;
-            font-size: 1rem;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            text-decoration: none;
-            color: white;
-            background: linear-gradient(135deg, #7c3aed, #a855f7);
-            border-radius: 60px;
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(124, 58, 237, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.25);
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 40px;
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: white;
+        background: linear-gradient(135deg, #4a7c2e, #2d5a1e);
+        border-radius: 60px;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 20px rgba(46, 125, 50, 0.4);
+        border: 1px solid rgba(200, 180, 100, 0.5);
         }
 
         .hero-btn:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(124, 58, 237, 0.7), 0 0 12px rgba(192, 132, 252, 0.6);
+        transform: translateY(-4px);
+        background: linear-gradient(135deg, #5c9e3a, #3a7a28);
+        box-shadow: 0 12px 30px rgba(46, 125, 50, 0.6), 0 0 15px rgba(200, 180, 100, 0.4);
+        }
+
+        .hero::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(20, 50, 15, 0.4) 100%);
+        z-index: 1;
         }
 
         @keyframes fadeInUp {
