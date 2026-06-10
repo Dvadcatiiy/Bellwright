@@ -17,6 +17,49 @@
             overflow-x: hidden;
         }
 
+        /* ========== ПАДАЮЩИЕ ЛИСТЬЯ ========== */
+        .leaves-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+            overflow: hidden;
+        }
+
+        .leaf {
+            position: absolute;
+            top: -20px;
+            left: var(--x);
+            width: var(--size);
+            height: var(--size);
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%236b8c42"><path d="M12,2C9,7,4,9,4,14c0,4,4,6,8,6s8-2,8-6C20,9,15,7,12,2z"/></svg>') no-repeat center;
+            background-size: contain;
+            opacity: var(--opacity);
+            animation: fall var(--duration) linear infinite;
+            animation-delay: var(--delay);
+            filter: drop-shadow(0 0 3px rgba(100, 150, 50, 0.3));
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-20px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: var(--opacity);
+            }
+            90% {
+                opacity: var(--opacity);
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
         /* ========== ПОЛНОЭКРАННЫЙ ВИДЕОФОН ========== */
         .hero {
             position: relative;
@@ -62,7 +105,6 @@
             animation: fadeInUp 1.2s ease-out;
         }
 
-        /* Заголовок — чёрно-зелёный градиент */
         .hero-title {
             font-size: 5rem;
             font-weight: 800;
@@ -87,7 +129,6 @@
             margin-right: auto;
         }
 
-        /* Кнопка — чёрно-зелёная */
         .hero-btn {
             display: inline-flex;
             align-items: center;
@@ -139,11 +180,13 @@
             50% { transform: translateX(-50%) translateY(8px); opacity: 1; }
         }
 
-        /* ========== ОСНОВНАЯ ИНФОРМАЦИЯ (ЧЁРНО-ЗЕЛЁНЫЙ ФОН) ========== */
+        /* ========== ОСНОВНАЯ ИНФОРМАЦИЯ (ЧЁРНО-ЗЕЛЁНЫЙ) ========== */
         .info-section {
             background: linear-gradient(135deg, #050a05 0%, #0a1508 50%, #050a05 100%);
             padding: 80px 20px;
             text-align: center;
+            position: relative;
+            z-index: 5;
         }
 
         .info-container {
@@ -251,6 +294,9 @@
 </head>
 <body>
 
+    <!-- ПАДАЮЩИЕ ЛИСТЬЯ -->
+    <div class="leaves-container" id="leavesContainer"></div>
+
     <!-- ВИДЕОФОН НА ВЕСЬ ЭКРАН -->
     <section class="hero" id="hero">
         <video class="hero-video" autoplay loop muted playsinline>
@@ -272,7 +318,7 @@
         </div>
     </section>
 
-    <!-- ОСНОВНАЯ ИНФОРМАЦИЯ ПРИ ПРОКРУТКЕ -->
+    <!-- ОСНОВНАЯ ИНФОРМАЦИЯ -->
     <section class="info-section">
         <div class="info-container">
             <h2 class="info-title">⚔️ О игре Bellwright ⚔️</h2>
@@ -324,9 +370,39 @@
     </footer>
 
     <script>
+        // Плавный скролл
         document.querySelector('.scroll-hint')?.addEventListener('click', () => {
             document.querySelector('.info-section').scrollIntoView({ behavior: 'smooth' });
         });
+
+        // ГЕНЕРАЦИЯ ПАДАЮЩИХ ЛИСТЬЕВ
+        function createLeaves() {
+            const container = document.getElementById('leavesContainer');
+            const leafCount = 35; // количество листьев
+            
+            for (let i = 0; i < leafCount; i++) {
+                const leaf = document.createElement('div');
+                leaf.classList.add('leaf');
+                
+                // Случайные параметры
+                const size = Math.random() * 20 + 12; // от 12px до 32px
+                const left = Math.random() * 100; // от 0% до 100%
+                const duration = Math.random() * 8 + 5; // от 5 до 13 секунд
+                const delay = Math.random() * 15; // от 0 до 15 секунд
+                const opacity = Math.random() * 0.5 + 0.3; // от 0.3 до 0.8
+                
+                // Применяем переменные CSS
+                leaf.style.setProperty('--x', left + '%');
+                leaf.style.setProperty('--size', size + 'px');
+                leaf.style.setProperty('--duration', duration + 's');
+                leaf.style.setProperty('--delay', delay + 's');
+                leaf.style.setProperty('--opacity', opacity);
+                
+                container.appendChild(leaf);
+            }
+        }
+        
+        createLeaves();
     </script>
 </body>
 </html>
