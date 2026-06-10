@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Bellwright | Главная</title>
+    <title>Bellwright | Эльфийский лес</title>
     <style>
         * {
             margin: 0;
@@ -85,7 +85,7 @@
             z-index: 0;
         }
 
-        /* Чёрно-зелёная накладка */
+        /* Чёрно-зелёная накладка — более глубокая */
         .hero::after {
             content: '';
             position: absolute;
@@ -93,69 +93,80 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.75) 0%, rgba(10, 30, 10, 0.7) 100%);
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(5, 20, 5, 0.75) 100%);
             z-index: 1;
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 900px;
+            max-width: 950px;
             padding: 20px;
             animation: fadeInUp 1.2s ease-out;
         }
 
+        /* ЖИРНЫЙ ЗАГОЛОВОК: увеличенная толщина, более мощная тень и градиент */
         .hero-title {
-            font-size: 5rem;
-            font-weight: 800;
-            letter-spacing: 8px;
+            font-size: 5.2rem;
+            font-weight: 900;
+            letter-spacing: 10px;
             text-transform: uppercase;
-            margin-bottom: 20px;
-            text-shadow: 0 0 20px rgba(0, 0, 0, 0.8), 0 0 40px rgba(50, 100, 30, 0.5);
-            background: linear-gradient(135deg, #e8e8e8, #6b8c42, #2a4a1a);
+            margin-bottom: 24px;
+            text-shadow: 0 0 25px rgba(0, 0, 0, 0.9), 0 0 50px rgba(60, 120, 30, 0.7);
+            background: linear-gradient(135deg, #f0f5e8, #c9ae5c, #6b8c42, #2a5a1a);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            font-stretch: expanded;
+        }
+
+        /* Дополнительный эффект "тяжёлого" металлического блеска */
+        .hero-title strong {
+            font-weight: 900;
         }
 
         .hero-subtitle {
             font-size: 1.2rem;
-            line-height: 1.5;
-            margin-bottom: 32px;
-            color: #b8d4a0;
-            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.8);
-            max-width: 700px;
+            line-height: 1.6;
+            margin-bottom: 36px;
+            color: #d4eac0;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+            max-width: 750px;
             margin-left: auto;
             margin-right: auto;
+            font-weight: 500;
+            letter-spacing: 0.3px;
         }
 
+        /* КНОПКИ — жирнее и объёмнее */
         .hero-btn {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            padding: 14px 40px;
-            font-size: 1rem;
-            font-weight: 600;
-            letter-spacing: 1.5px;
+            gap: 14px;
+            padding: 16px 48px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: 2px;
             text-transform: uppercase;
             text-decoration: none;
-            color: #e8f0dc;
-            background: linear-gradient(135deg, #1a2a0a, #0a1a00);
+            color: #f0f5e8;
+            background: linear-gradient(135deg, #1e3010, #0a1a00);
             border-radius: 60px;
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(100, 150, 50, 0.4);
+            transition: all 0.35s ease;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(100, 150, 50, 0.6);
+            backdrop-filter: blur(2px);
         }
 
         .hero-btn:hover {
-            transform: translateY(-4px);
-            background: linear-gradient(135deg, #2a4a1a, #1a2a0a);
-            box-shadow: 0 12px 30px rgba(30, 80, 20, 0.5), 0 0 15px rgba(100, 150, 50, 0.2);
-            border-color: rgba(100, 150, 50, 0.7);
+            transform: translateY(-4px) scale(1.02);
+            background: linear-gradient(135deg, #2e4a1a, #1a2a0a);
+            box-shadow: 0 16px 35px rgba(30, 80, 20, 0.7), 0 0 18px rgba(110, 160, 70, 0.4);
+            border-color: #8ab860;
         }
 
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
+            from { opacity: 0; transform: translateY(45px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -165,14 +176,16 @@
             left: 50%;
             transform: translateX(-50%);
             z-index: 3;
-            color: rgba(150, 200, 120, 0.85);
-            font-size: 0.8rem;
+            color: rgba(170, 210, 130, 0.9);
+            font-size: 0.85rem;
+            font-weight: 500;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 6px;
             animation: bounce 2s infinite;
             cursor: pointer;
+            text-shadow: 0 1px 3px black;
         }
 
         @keyframes bounce {
@@ -195,12 +208,13 @@
         }
 
         .info-title {
-            font-size: 2.5rem;
+            font-size: 2.6rem;
             margin-bottom: 20px;
-            background: linear-gradient(135deg, #8ab860, #4a7a2e);
+            background: linear-gradient(135deg, #a8d068, #5a8a3a);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            font-weight: 700;
         }
 
         .info-grid {
@@ -215,15 +229,15 @@
             backdrop-filter: blur(10px);
             border-radius: 28px;
             padding: 30px 20px;
-            border: 1px solid rgba(70, 120, 40, 0.3);
+            border: 1px solid rgba(70, 120, 40, 0.35);
             transition: all 0.3s ease;
         }
 
         .info-card:hover {
             transform: translateY(-8px);
-            border-color: #6b8c42;
-            box-shadow: 0 15px 35px rgba(30, 80, 20, 0.2);
-            background: rgba(10, 20, 8, 0.8);
+            border-color: #7aac50;
+            box-shadow: 0 15px 35px rgba(30, 80, 20, 0.25);
+            background: rgba(12, 24, 10, 0.85);
         }
 
         .info-icon {
@@ -232,41 +246,45 @@
         }
 
         .info-card h3 {
-            color: #8ab860;
+            color: #9ec86a;
             margin-bottom: 12px;
             font-size: 1.4rem;
+            font-weight: 600;
         }
 
         .info-card p {
-            color: #a8c898;
+            color: #bcd0a0;
             line-height: 1.6;
         }
 
         .characters-link {
             display: inline-block;
             margin-top: 50px;
-            padding: 14px 40px;
-            background: linear-gradient(135deg, #1a2a0a, #0a1a00);
+            padding: 14px 44px;
+            background: linear-gradient(135deg, #1e3010, #0a1a00);
             border-radius: 60px;
-            color: #e8f0dc;
+            color: #f0f5e8;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 1px;
             transition: all 0.3s ease;
-            border: 1px solid rgba(100, 150, 50, 0.4);
+            border: 1px solid rgba(100, 150, 50, 0.5);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
 
         .characters-link:hover {
             transform: translateY(-3px);
-            background: linear-gradient(135deg, #2a4a1a, #1a2a0a);
-            box-shadow: 0 10px 25px rgba(30, 80, 20, 0.3);
-            border-color: #6b8c42;
+            background: linear-gradient(135deg, #2e4a1a, #1a2a0a);
+            box-shadow: 0 10px 25px rgba(30, 80, 20, 0.4);
+            border-color: #8ab860;
         }
 
         .footer {
             text-align: center;
             padding: 30px;
             border-top: 1px solid rgba(70, 120, 40, 0.2);
-            color: #6a8a50;
+            color: #7a9a60;
             font-size: 0.8rem;
             background: #050a05;
         }
@@ -284,10 +302,10 @@
         }
 
         @media (max-width: 768px) {
-            .hero-title { font-size: 2.5rem; letter-spacing: 4px; }
-            .hero-subtitle { font-size: 1rem; }
-            .hero-btn { padding: 10px 24px; font-size: 0.9rem; }
-            .info-title { font-size: 1.8rem; }
+            .hero-title { font-size: 2.8rem; letter-spacing: 5px; }
+            .hero-subtitle { font-size: 1rem; margin-bottom: 28px; }
+            .hero-btn { padding: 12px 28px; font-size: 0.9rem; gap: 8px; }
+            .info-title { font-size: 2rem; }
             .info-section { padding: 50px 16px; }
         }
     </style>
@@ -306,9 +324,9 @@
         <div class="hero-content">
             <h1 class="hero-title">BELLWRIGHT</h1>
             <p class="hero-subtitle">
-                That is not dead which can eternal lie.<br>
-                And with strange eons even death may die.<br>
-                In his house at R'lyeh, dead Cthulhu waits dreaming.
+                То, что вечно покоится, не может умереть.<br>
+                В странных эонах даже смерть может угаснуть.<br>
+                В своём доме в Р'лайе мёртвый Ктулху ждёт во сне.
             </p>
             <a href="characters.html" class="hero-btn">📋 Управление персонажами</a>
         </div>
@@ -322,7 +340,7 @@
     <section class="info-section">
         <div class="info-container">
             <h2 class="info-title">⚔️ О игре Bellwright ⚔️</h2>
-            <p style="color: #a8c898; max-width: 700px; margin: 0 auto;">
+            <p style="color: #b8d4a0; max-width: 700px; margin: 0 auto;">
                 Bellwright — средневековая RPG с элементами выживания и строительства.  
                 Возглавьте восстание против тирании, стройте поселения и развивайте отряд.
             </p>
@@ -370,28 +388,27 @@
     </footer>
 
     <script>
-        // Плавный скролл
+        // Плавный скролл по клику на стрелку
         document.querySelector('.scroll-hint')?.addEventListener('click', () => {
             document.querySelector('.info-section').scrollIntoView({ behavior: 'smooth' });
         });
 
-        // ГЕНЕРАЦИЯ ПАДАЮЩИХ ЛИСТЬЕВ
+        // ГЕНЕРАЦИЯ ПАДАЮЩИХ ЛИСТЬЕВ (более густая листва)
         function createLeaves() {
             const container = document.getElementById('leavesContainer');
-            const leafCount = 35; // количество листьев
+            const leafCount = 45; // чуть больше листьев для атмосферы
             
             for (let i = 0; i < leafCount; i++) {
                 const leaf = document.createElement('div');
                 leaf.classList.add('leaf');
                 
-                // Случайные параметры
-                const size = Math.random() * 20 + 12; // от 12px до 32px
-                const left = Math.random() * 100; // от 0% до 100%
-                const duration = Math.random() * 8 + 5; // от 5 до 13 секунд
-                const delay = Math.random() * 15; // от 0 до 15 секунд
-                const opacity = Math.random() * 0.5 + 0.3; // от 0.3 до 0.8
+                // Разнообразие размеров и скорости
+                const size = Math.random() * 24 + 10; 
+                const left = Math.random() * 100;
+                const duration = Math.random() * 10 + 5;
+                const delay = Math.random() * 18;
+                const opacity = Math.random() * 0.55 + 0.25;
                 
-                // Применяем переменные CSS
                 leaf.style.setProperty('--x', left + '%');
                 leaf.style.setProperty('--size', size + 'px');
                 leaf.style.setProperty('--duration', duration + 's');
