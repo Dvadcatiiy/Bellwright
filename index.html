@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-            background: #0a0a1a;
+            background: #0a1a0a;
             overflow-x: hidden;
         }
 
@@ -42,6 +42,7 @@
             z-index: 0;
         }
 
+        /* Тёмно-зелёная накладка вместо фиолетовой */
         .hero::after {
             content: '';
             position: absolute;
@@ -49,7 +50,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.65) 0%, rgba(30, 15, 55, 0.6) 100%);
+            background: linear-gradient(135deg, rgba(10, 30, 10, 0.7) 0%, rgba(20, 50, 20, 0.6) 100%);
             z-index: 1;
         }
 
@@ -61,64 +62,54 @@
             animation: fadeInUp 1.2s ease-out;
         }
 
+        /* Заголовок — оставляем оригинальный текст, меняем цвет на изумрудный */
         .hero-title {
-        font-size: 5rem;
-        font-weight: 800;
-        letter-spacing: 8px;
-        text-transform: uppercase;
-        margin-bottom: 20px;
-        text-shadow: 0 0 20px rgba(0, 0, 0, 0.5), 0 0 40px rgba(46, 125, 50, 0.3);
-        background: linear-gradient(135deg, #e8d5a3, #c9ae5c, #6b8c42);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
+            font-size: 5rem;
+            font-weight: 800;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(0, 0, 0, 0.6), 0 0 40px rgba(60, 120, 30, 0.5);
+            background: linear-gradient(135deg, #ffffff, #c9ae5c, #4a7a2e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         .hero-subtitle {
-        font-size: 1.2rem;
-        line-height: 1.5;
-        margin-bottom: 32px;
-        color: #d4e6b0;
-        text-shadow: 0 0 10px rgba(100, 150, 50, 0.3);
-        max-width: 700px;
-        margin-left: auto;
-        margin-right: auto;
+            font-size: 1.2rem;
+            line-height: 1.5;
+            margin-bottom: 32px;
+            color: #d4e6b0;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.6);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        /* Кнопка */
+        /* Кнопка — изумрудная */
         .hero-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 12px;
-        padding: 14px 40px;
-        font-size: 1rem;
-        font-weight: 600;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-        text-decoration: none;
-        color: white;
-        background: linear-gradient(135deg, #4a7c2e, #2d5a1e);
-        border-radius: 60px;
-        transition: all 0.3s ease;
-        box-shadow: 0 6px 20px rgba(46, 125, 50, 0.4);
-        border: 1px solid rgba(200, 180, 100, 0.5);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 40px;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(135deg, #2a5a1a, #1a3a0a);
+            border-radius: 60px;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(30, 80, 20, 0.5);
+            border: 1px solid rgba(200, 180, 100, 0.4);
         }
 
         .hero-btn:hover {
-        transform: translateY(-4px);
-        background: linear-gradient(135deg, #5c9e3a, #3a7a28);
-        box-shadow: 0 12px 30px rgba(46, 125, 50, 0.6), 0 0 15px rgba(200, 180, 100, 0.4);
-        }
-
-        .hero::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(20, 50, 15, 0.4) 100%);
-        z-index: 1;
+            transform: translateY(-4px);
+            background: linear-gradient(135deg, #3a7a28, #2a5a18);
+            box-shadow: 0 12px 30px rgba(50, 120, 30, 0.6), 0 0 15px rgba(200, 180, 100, 0.3);
         }
 
         @keyframes fadeInUp {
@@ -126,14 +117,13 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Индикатор скролла */
         .scroll-hint {
             position: absolute;
             bottom: 28px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 3;
-            color: rgba(255, 255, 255, 0.75);
+            color: rgba(200, 220, 150, 0.85);
             font-size: 0.8rem;
             display: flex;
             flex-direction: column;
@@ -148,9 +138,9 @@
             50% { transform: translateX(-50%) translateY(8px); opacity: 1; }
         }
 
-        /* ========== ОСНОВНАЯ ИНФОРМАЦИЯ (ПРОКРУТКА ВНИЗ) ========== */
+        /* ========== ОСНОВНАЯ ИНФОРМАЦИЯ (ТЁМНО-ЗЕЛЁНЫЙ ФОН) ========== */
         .info-section {
-            background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 100%);
+            background: linear-gradient(135deg, #0a1a0a 0%, #0d2a0d 50%, #0a1a0a 100%);
             padding: 80px 20px;
             text-align: center;
         }
@@ -163,7 +153,7 @@
         .info-title {
             font-size: 2.5rem;
             margin-bottom: 20px;
-            background: linear-gradient(135deg, #c084fc, #a855f7);
+            background: linear-gradient(135deg, #c9ae5c, #6b8c42);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -177,18 +167,18 @@
         }
 
         .info-card {
-            background: rgba(30, 20, 50, 0.5);
+            background: rgba(15, 35, 15, 0.6);
             backdrop-filter: blur(10px);
-            border-radius: 24px;
+            border-radius: 28px;
             padding: 30px 20px;
-            border: 1px solid rgba(156, 82, 255, 0.3);
+            border: 1px solid rgba(100, 150, 50, 0.3);
             transition: all 0.3s ease;
         }
 
         .info-card:hover {
             transform: translateY(-8px);
-            border-color: #a855f7;
-            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
+            border-color: #8ab860;
+            box-shadow: 0 15px 35px rgba(50, 100, 30, 0.3);
         }
 
         .info-icon {
@@ -197,13 +187,13 @@
         }
 
         .info-card h3 {
-            color: #c084fc;
+            color: #c9ae5c;
             margin-bottom: 12px;
             font-size: 1.4rem;
         }
 
         .info-card p {
-            color: #b4a4d0;
+            color: #c0d8a0;
             line-height: 1.6;
         }
 
@@ -211,35 +201,39 @@
             display: inline-block;
             margin-top: 50px;
             padding: 14px 40px;
-            background: linear-gradient(135deg, #7c3aed, #a855f7);
+            background: linear-gradient(135deg, #2a5a1a, #1a3a0a);
             border-radius: 60px;
             color: white;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
+            border: 1px solid rgba(200, 180, 100, 0.4);
         }
 
         .characters-link:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.5);
+            background: linear-gradient(135deg, #3a7a28, #2a5a18);
+            box-shadow: 0 10px 25px rgba(50, 120, 30, 0.4);
         }
 
         .footer {
             text-align: center;
             padding: 30px;
-            border-top: 1px solid rgba(156, 82, 255, 0.2);
-            color: #8a7aaa;
+            border-top: 1px solid rgba(100, 150, 50, 0.2);
+            color: #8aae70;
             font-size: 0.8rem;
+            background: #0a1a0a;
         }
 
         ::-webkit-scrollbar {
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #1a0a2e;
+            background: #0d2a0d;
+            border-radius: 10px;
         }
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, #7c3aed, #a855f7);
+            background: linear-gradient(135deg, #2a5a1a, #4a7a2e);
             border-radius: 10px;
         }
 
@@ -256,17 +250,16 @@
 
     <!-- ВИДЕОФОН НА ВЕСЬ ЭКРАН -->
     <section class="hero" id="hero">
-        <!-- ЗАМЕНИТЕ ССЫЛКУ НА ВАШЕ ВИДЕО -->
-<video class="hero-video" autoplay loop muted playsinline>
-    <source src="dragon.mp4" type="video/mp4">
-    Ваш браузер не поддерживает видеофон.
-</video>
+        <video class="hero-video" autoplay loop muted playsinline>
+            <source src="dragon.mp4" type="video/mp4">
+            Ваш браузер не поддерживает видеофон.
+        </video>
         <div class="hero-content">
             <h1 class="hero-title">BELLWRIGHT</h1>
             <p class="hero-subtitle">
-                That is not dead which can eternal lie.<br>
-                And with strange eons even death may die.<br>
-                In his house at R'lyeh, dead Cthulhu waits dreaming.
+                Не мертво то, что может лежать вечно.<br>
+                И в странные времена даже смерть может умереть.<br>
+                В своем доме в Р'льехе мертвый Ктулху ждет и видит сны.
             </p>
             <a href="characters.html" class="hero-btn">📋 Управление персонажами</a>
         </div>
@@ -280,7 +273,7 @@
     <section class="info-section">
         <div class="info-container">
             <h2 class="info-title">⚔️ О игре Bellwright ⚔️</h2>
-            <p style="color: #b4a4d0; max-width: 700px; margin: 0 auto;">
+            <p style="color: #c0d8a0; max-width: 700px; margin: 0 auto;">
                 Bellwright — средневековая RPG с элементами выживания и строительства.  
                 Возглавьте восстание против тирании, стройте поселения и развивайте отряд.
             </p>
@@ -322,13 +315,12 @@
         </div>
     </section>
 
-<footer class="footer">
-    <p>Bellwright Fan Site | Управление отрядом и персонажами | Да пребудет с вами сила отряда</p>
-    <p style="margin-top: 8px;">⚔️ Все данные сохраняются и синхронизируются автоматически | 2026 ⚔️</p>
-</footer>
+    <footer class="footer">
+        <p>Bellwright Fan Site | Управление отрядом и персонажами | Да пребудет с вами сила отряда</p>
+        <p style="margin-top: 8px;">⚔️ Все данные сохраняются и синхронизируются автоматически | 2026 ⚔️</p>
+    </footer>
 
     <script>
-        // Плавный скролл по клику на стрелку
         document.querySelector('.scroll-hint')?.addEventListener('click', () => {
             document.querySelector('.info-section').scrollIntoView({ behavior: 'smooth' });
         });
