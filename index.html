@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bellwright - Modern Interface</title>
+    <title>Bellwright - Фиолетовый стиль</title>
     <style>
         * {
             margin: 0;
@@ -13,13 +13,14 @@
 
         body {
             font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-            background: linear-gradient(135deg, #0a0f0d 0%, #0d1a12 50%, #0a0f0d 100%);
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 50%, #0a0a1a 100%);
             color: #e4e6eb;
             min-height: 100vh;
             line-height: 1.5;
         }
 
-        .animated-bg {
+        /* Анимированные партиклы */
+        .particles {
             position: fixed;
             top: 0;
             left: 0;
@@ -29,29 +30,28 @@
             overflow: hidden;
         }
 
-        .animated-bg::before {
-            content: '';
+        .particle {
             position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 50%, rgba(88, 196, 221, 0.15) 0%, transparent 60%);
-            animation: slowPulse 12s ease-in-out infinite;
+            background: rgba(156, 82, 255, 0.6);
+            border-radius: 50%;
+            animation: floatParticle linear infinite;
+            filter: blur(2px);
         }
 
-        .animated-bg::after {
-            content: '';
-            position: absolute;
-            width: 150%;
-            height: 150%;
-            background: radial-gradient(circle at 70% 80%, rgba(138, 154, 106, 0.1) 0%, transparent 70%);
-            animation: slowPulse 15s ease-in-out infinite reverse;
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
         }
 
-        @keyframes slowPulse {
-            0%, 100% { opacity: 0.4; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.05); }
-        }
-
+        /* Основной контейнер */
         .container {
             max-width: 1400px;
             margin: 0 auto;
@@ -60,6 +60,7 @@
             z-index: 1;
         }
 
+        /* Стеклянная навигация */
         .nav {
             display: flex;
             justify-content: space-between;
@@ -67,14 +68,18 @@
             flex-wrap: wrap;
             gap: 20px;
             margin-bottom: 60px;
-            padding: 16px 0;
-            border-bottom: 1px solid rgba(88, 196, 221, 0.2);
+            padding: 16px 24px;
+            background: rgba(30, 20, 50, 0.4);
+            backdrop-filter: blur(12px);
+            border-radius: 60px;
+            border: 1px solid rgba(156, 82, 255, 0.3);
+            box-shadow: 0 4px 20px rgba(156, 82, 255, 0.1);
         }
 
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #58c4dd, #8a9a6a);
+            background: linear-gradient(135deg, #c084fc, #a855f7, #7c3aed);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -83,11 +88,11 @@
 
         .nav-links {
             display: flex;
-            gap: 24px;
+            gap: 32px;
         }
 
         .nav-link {
-            color: #b0b3b8;
+            color: #d4c4f0;
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
@@ -97,12 +102,13 @@
         .nav-link::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: -6px;
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, #58c4dd, #8a9a6a);
+            background: linear-gradient(90deg, #c084fc, #a855f7);
             transition: width 0.3s ease;
+            border-radius: 2px;
         }
 
         .nav-link:hover::after {
@@ -110,44 +116,60 @@
         }
 
         .nav-link:hover {
-            color: #58c4dd;
+            color: #c084fc;
+            text-shadow: 0 0 8px rgba(192, 132, 252, 0.5);
         }
 
+        /* Hero секция */
         .hero {
             text-align: center;
             margin-bottom: 80px;
         }
 
-        .hero h1 {
+        .glitch-text {
             font-size: 4rem;
             font-weight: 800;
             margin-bottom: 20px;
-            background: linear-gradient(135deg, #ffffff 0%, #58c4dd 40%, #8a9a6a 100%);
+            position: relative;
+            animation: glitch 3s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 100% { text-shadow: 0 0 0 #c084fc, 0 0 0 #7c3aed; }
+            95% { text-shadow: 0 0 0 #c084fc, 0 0 0 #7c3aed; }
+            96% { text-shadow: -3px 0 #c084fc, 3px 0 #7c3aed; }
+            97% { text-shadow: 3px 0 #c084fc, -3px 0 #7c3aed; }
+            98% { text-shadow: 0 0 0 #c084fc, 0 0 0 #7c3aed; }
+        }
+
+        .glitch-text span {
+            background: linear-gradient(135deg, #e9d5ff 0%, #c084fc 40%, #a855f7 100%);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            letter-spacing: -0.02em;
         }
 
         .hero p {
             font-size: 1.2rem;
-            color: #b0b3b8;
+            color: #c4b4e0;
             max-width: 700px;
             margin: 0 auto 32px;
         }
 
+        /* Стеклянные карточки с 3D-наклоном */
         .glass-card {
-            background: rgba(45, 46, 50, 0.4);
+            background: rgba(40, 25, 65, 0.4);
             backdrop-filter: blur(12px);
             border-radius: 32px;
-            border: 1px solid rgba(88, 196, 221, 0.2);
+            border: 1px solid rgba(156, 82, 255, 0.3);
             transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
         .glass-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(88, 196, 221, 0.5);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(192, 132, 252, 0.6);
+            box-shadow: 0 20px 40px rgba(156, 82, 255, 0.3), 0 0 20px rgba(156, 82, 255, 0.2);
         }
 
         .features-grid {
@@ -160,6 +182,7 @@
         .feature-card {
             padding: 32px 24px;
             text-align: center;
+            transition: transform 0.3s ease;
         }
 
         .feature-icon {
@@ -167,6 +190,7 @@
             margin-bottom: 16px;
             display: inline-block;
             animation: gentleFloat 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 8px rgba(192, 132, 252, 0.5));
         }
 
         @keyframes gentleFloat {
@@ -176,98 +200,127 @@
 
         .feature-card h3 {
             font-size: 1.4rem;
-            color: #58c4dd;
+            color: #c084fc;
             margin-bottom: 12px;
         }
 
         .feature-card p {
-            color: #b0b3b8;
+            color: #b4a4d0;
             line-height: 1.6;
         }
 
+        /* Кнопки с неоновым эффектом */
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 10px;
             padding: 14px 32px;
-            border-radius: 40px;
+            border-radius: 60px;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
             cursor: pointer;
             border: none;
             font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+        }
+
+        .btn:hover::before {
+            width: 300%;
+            height: 300%;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #2c6e9e, #1e5a85);
+            background: linear-gradient(135deg, #7c3aed, #a855f7);
             color: white;
-            box-shadow: 0 4px 15px rgba(44, 110, 158, 0.4);
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(44, 110, 158, 0.6);
+            box-shadow: 0 8px 25px rgba(124, 58, 237, 0.6), 0 0 15px rgba(192, 132, 252, 0.4);
         }
 
         .btn-outline {
             background: transparent;
-            border: 1px solid #58c4dd;
-            color: #58c4dd;
+            border: 1px solid #a855f7;
+            color: #c084fc;
         }
 
         .btn-outline:hover {
-            background: rgba(88, 196, 221, 0.1);
+            background: rgba(168, 85, 247, 0.15);
             transform: translateY(-3px);
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
+            border-color: #c084fc;
         }
 
+        /* Превью секция */
         .preview-section {
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(30, 20, 50, 0.4);
+            backdrop-filter: blur(12px);
             border-radius: 32px;
             padding: 48px;
             text-align: center;
             margin-bottom: 60px;
+            border: 1px solid rgba(156, 82, 255, 0.3);
         }
 
         .preview-section h2 {
             font-size: 2rem;
             margin-bottom: 16px;
+            color: #c084fc;
         }
 
         .preview-placeholder {
-            background: rgba(45, 46, 50, 0.6);
+            background: rgba(40, 25, 65, 0.6);
             border-radius: 24px;
             padding: 60px;
             margin-top: 24px;
-            border: 2px dashed rgba(88, 196, 221, 0.3);
+            border: 2px dashed rgba(156, 82, 255, 0.4);
+            color: #b4a4d0;
         }
 
+        /* Футер */
         .footer {
             text-align: center;
             padding: 32px;
-            border-top: 1px solid rgba(88, 196, 221, 0.2);
-            color: #6a7a5a;
+            border-top: 1px solid rgba(156, 82, 255, 0.2);
+            color: #8a7aaa;
         }
 
+        /* Адаптивность */
         @media (max-width: 768px) {
             .container {
                 padding: 20px;
             }
-            .hero h1 {
+            .glitch-text {
                 font-size: 2.5rem;
             }
             .preview-section {
                 padding: 24px;
             }
-            .preview-placeholder {
-                padding: 30px;
-            }
             .nav {
                 flex-direction: column;
                 text-align: center;
+                border-radius: 32px;
             }
         }
 
+        /* Анимация появления */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -286,10 +339,26 @@
         .delay-1 { animation-delay: 0.1s; }
         .delay-2 { animation-delay: 0.2s; }
         .delay-3 { animation-delay: 0.3s; }
+
+        /* Кастомный скроллбар */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a0a2e;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #7c3aed, #a855f7);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #a855f7, #c084fc);
+        }
     </style>
 </head>
 <body>
-<div class="animated-bg"></div>
+<div class="particles" id="particles"></div>
 <div class="container">
     <nav class="nav">
         <div class="logo">⚔️ BELLWRIGHT</div>
@@ -302,7 +371,7 @@
     </nav>
 
     <div class="hero animate-in">
-        <h1>Управляйте отрядом<br>в средневековом мире</h1>
+        <h1 class="glitch-text"><span>Управляйте отрядом<br>в средневековом мире</span></h1>
         <p>Bellwright — RPG с элементами выживания. Развивайте персонажей, улучшайте навыки и стройте своё королевство</p>
         <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
             <a href="characters.html" class="btn btn-primary">📋 Управление персонажами</a>
@@ -348,14 +417,36 @@
         <p>Находите лён, коноплю, руду и другие ресурсы на интерактивной карте</p>
         <div class="preview-placeholder">
             🌟 Здесь будет интерактивная карта с маркерами ресурсов<br>
-            <small>Скажите ключевое слово «интерактивная карта» — и я добавлю её!</small>
+            <small>✨ Скажите ключевое слово «интерактивная карта» — и я добавлю её! ✨</small>
         </div>
     </div>
 
     <footer class="footer">
         <p>Bellwright Fan Site | Управление отрядом и персонажами | Синхронизация через Airtable</p>
-        <p style="font-size: 0.8rem; margin-top: 8px;">© 2024 — Все персонажи и характеристики защищены эльфийской магией ✨</p>
+        <p style="font-size: 0.8rem; margin-top: 8px; opacity: 0.7;">💜 Фиолетовое издание 💜</p>
     </footer>
 </div>
+
+<script>
+    // Генерация партиклов
+    function createParticles() {
+        const container = document.getElementById('particles');
+        const particleCount = 50;
+        
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            particle.style.width = Math.random() * 6 + 2 + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDuration = Math.random() * 10 + 8 + 's';
+            particle.style.animationDelay = Math.random() * 5 + 's';
+            particle.style.opacity = Math.random() * 0.5 + 0.2;
+            container.appendChild(particle);
+        }
+    }
+    
+    createParticles();
+</script>
 </body>
 </html>
