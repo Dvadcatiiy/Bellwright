@@ -60,6 +60,60 @@
             }
         }
 
+        /* ========== МЕНЮ (ПРАВЫЙ ВЕРХНИЙ УГОЛ) ========== */
+        .menu {
+            position: fixed;
+            top: 25px;
+            right: 30px;
+            z-index: 100;
+            display: flex;
+            gap: 28px;
+            background: rgba(5, 10, 5, 0.5);
+            backdrop-filter: blur(12px);
+            padding: 10px 24px;
+            border-radius: 60px;
+            border: 1px solid rgba(100, 150, 50, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .menu:hover {
+            border-color: rgba(100, 150, 50, 0.6);
+            background: rgba(5, 10, 5, 0.7);
+        }
+
+        .menu-link {
+            color: #c8e0b0;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        /* Эффект подчёркивания при наведении */
+        .menu-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #8ab860, #c9ae5c);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .menu-link:hover::after {
+            width: 100%;
+        }
+
+        .menu-link:hover {
+            color: #e8f0dc;
+            text-shadow: 0 0 6px rgba(100, 150, 50, 0.5);
+        }
+
         /* ========== ПОЛНОЭКРАННЫЙ ВИДЕОФОН ========== */
         .hero {
             position: relative;
@@ -85,7 +139,6 @@
             z-index: 0;
         }
 
-        /* Чёрно-зелёная накладка — более глубокая */
         .hero::after {
             content: '';
             position: absolute;
@@ -105,7 +158,6 @@
             animation: fadeInUp 1.2s ease-out;
         }
 
-        /* ЖИРНЫЙ ЗАГОЛОВОК: увеличенная толщина, более мощная тень и градиент */
         .hero-title {
             font-size: 5.2rem;
             font-weight: 900;
@@ -117,12 +169,6 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            font-stretch: expanded;
-        }
-
-        /* Дополнительный эффект "тяжёлого" металлического блеска */
-        .hero-title strong {
-            font-weight: 900;
         }
 
         .hero-subtitle {
@@ -135,10 +181,8 @@
             margin-left: auto;
             margin-right: auto;
             font-weight: 500;
-            letter-spacing: 0.3px;
         }
 
-        /* КНОПКИ — жирнее и объёмнее */
         .hero-btn {
             display: inline-flex;
             align-items: center;
@@ -185,7 +229,6 @@
             gap: 6px;
             animation: bounce 2s infinite;
             cursor: pointer;
-            text-shadow: 0 1px 3px black;
         }
 
         @keyframes bounce {
@@ -193,7 +236,7 @@
             50% { transform: translateX(-50%) translateY(8px); opacity: 1; }
         }
 
-        /* ========== ОСНОВНАЯ ИНФОРМАЦИЯ (ЧЁРНО-ЗЕЛЁНЫЙ) ========== */
+        /* ========== ОСНОВНАЯ ИНФОРМАЦИЯ ========== */
         .info-section {
             background: linear-gradient(135deg, #050a05 0%, #0a1508 50%, #050a05 100%);
             padding: 80px 20px;
@@ -215,6 +258,12 @@
             background-clip: text;
             color: transparent;
             font-weight: 700;
+        }
+
+        .info-description {
+            color: #b8d4a0;
+            max-width: 700px;
+            margin: 0 auto;
         }
 
         .info-grid {
@@ -302,6 +351,15 @@
         }
 
         @media (max-width: 768px) {
+            .menu {
+                top: 15px;
+                right: 15px;
+                gap: 15px;
+                padding: 6px 16px;
+            }
+            .menu-link {
+                font-size: 0.8rem;
+            }
             .hero-title { font-size: 2.8rem; letter-spacing: 5px; }
             .hero-subtitle { font-size: 1rem; margin-bottom: 28px; }
             .hero-btn { padding: 12px 28px; font-size: 0.9rem; gap: 8px; }
@@ -314,6 +372,14 @@
 
     <!-- ПАДАЮЩИЕ ЛИСТЬЯ -->
     <div class="leaves-container" id="leavesContainer"></div>
+
+    <!-- МЕНЮ (ПРАВЫЙ ВЕРХНИЙ УГОЛ) -->
+    <div class="menu">
+        <a href="#" class="menu-link">Главная</a>
+        <a href="characters.html" class="menu-link">Персонажи</a>
+        <a href="#" class="menu-link">Карта</a>
+        <a href="#" class="menu-link">Гайды</a>
+    </div>
 
     <!-- ВИДЕОФОН НА ВЕСЬ ЭКРАН -->
     <section class="hero" id="hero">
@@ -340,7 +406,7 @@
     <section class="info-section">
         <div class="info-container">
             <h2 class="info-title">⚔️ О игре Bellwright ⚔️</h2>
-            <p style="color: #b8d4a0; max-width: 700px; margin: 0 auto;">
+            <p class="info-description">
                 Bellwright — средневековая RPG с элементами выживания и строительства.  
                 Возглавьте восстание против тирании, стройте поселения и развивайте отряд.
             </p>
@@ -388,22 +454,21 @@
     </footer>
 
     <script>
-        // Плавный скролл по клику на стрелку
+        // Плавный скролл
         document.querySelector('.scroll-hint')?.addEventListener('click', () => {
             document.querySelector('.info-section').scrollIntoView({ behavior: 'smooth' });
         });
 
-        // ГЕНЕРАЦИЯ ПАДАЮЩИХ ЛИСТЬЕВ (более густая листва)
+        // ГЕНЕРАЦИЯ ПАДАЮЩИХ ЛИСТЬЕВ
         function createLeaves() {
             const container = document.getElementById('leavesContainer');
-            const leafCount = 45; // чуть больше листьев для атмосферы
+            const leafCount = 45;
             
             for (let i = 0; i < leafCount; i++) {
                 const leaf = document.createElement('div');
                 leaf.classList.add('leaf');
                 
-                // Разнообразие размеров и скорости
-                const size = Math.random() * 24 + 10; 
+                const size = Math.random() * 24 + 10;
                 const left = Math.random() * 100;
                 const duration = Math.random() * 10 + 5;
                 const delay = Math.random() * 18;
