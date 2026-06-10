@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-            background: #0a1a0a;
+            background: #050a05;
             overflow-x: hidden;
         }
 
@@ -42,7 +42,7 @@
             z-index: 0;
         }
 
-        /* Тёмно-зелёная накладка вместо фиолетовой */
+        /* Чёрно-зелёная накладка */
         .hero::after {
             content: '';
             position: absolute;
@@ -50,7 +50,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(10, 30, 10, 0.7) 0%, rgba(20, 50, 20, 0.6) 100%);
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.75) 0%, rgba(10, 30, 10, 0.7) 100%);
             z-index: 1;
         }
 
@@ -62,15 +62,15 @@
             animation: fadeInUp 1.2s ease-out;
         }
 
-        /* Заголовок — оставляем оригинальный текст, меняем цвет на изумрудный */
+        /* Заголовок — чёрно-зелёный градиент */
         .hero-title {
             font-size: 5rem;
             font-weight: 800;
             letter-spacing: 8px;
             text-transform: uppercase;
             margin-bottom: 20px;
-            text-shadow: 0 0 20px rgba(0, 0, 0, 0.6), 0 0 40px rgba(60, 120, 30, 0.5);
-            background: linear-gradient(135deg, #ffffff, #c9ae5c, #4a7a2e);
+            text-shadow: 0 0 20px rgba(0, 0, 0, 0.8), 0 0 40px rgba(50, 100, 30, 0.5);
+            background: linear-gradient(135deg, #e8e8e8, #6b8c42, #2a4a1a);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -80,14 +80,14 @@
             font-size: 1.2rem;
             line-height: 1.5;
             margin-bottom: 32px;
-            color: #d4e6b0;
-            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.6);
+            color: #b8d4a0;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.8);
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        /* Кнопка — изумрудная */
+        /* Кнопка — чёрно-зелёная */
         .hero-btn {
             display: inline-flex;
             align-items: center;
@@ -98,18 +98,19 @@
             letter-spacing: 1.5px;
             text-transform: uppercase;
             text-decoration: none;
-            color: white;
-            background: linear-gradient(135deg, #2a5a1a, #1a3a0a);
+            color: #e8f0dc;
+            background: linear-gradient(135deg, #1a2a0a, #0a1a00);
             border-radius: 60px;
             transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(30, 80, 20, 0.5);
-            border: 1px solid rgba(200, 180, 100, 0.4);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(100, 150, 50, 0.4);
         }
 
         .hero-btn:hover {
             transform: translateY(-4px);
-            background: linear-gradient(135deg, #3a7a28, #2a5a18);
-            box-shadow: 0 12px 30px rgba(50, 120, 30, 0.6), 0 0 15px rgba(200, 180, 100, 0.3);
+            background: linear-gradient(135deg, #2a4a1a, #1a2a0a);
+            box-shadow: 0 12px 30px rgba(30, 80, 20, 0.5), 0 0 15px rgba(100, 150, 50, 0.2);
+            border-color: rgba(100, 150, 50, 0.7);
         }
 
         @keyframes fadeInUp {
@@ -123,7 +124,7 @@
             left: 50%;
             transform: translateX(-50%);
             z-index: 3;
-            color: rgba(200, 220, 150, 0.85);
+            color: rgba(150, 200, 120, 0.85);
             font-size: 0.8rem;
             display: flex;
             flex-direction: column;
@@ -138,9 +139,9 @@
             50% { transform: translateX(-50%) translateY(8px); opacity: 1; }
         }
 
-        /* ========== ОСНОВНАЯ ИНФОРМАЦИЯ (ТЁМНО-ЗЕЛЁНЫЙ ФОН) ========== */
+        /* ========== ОСНОВНАЯ ИНФОРМАЦИЯ (ЧЁРНО-ЗЕЛЁНЫЙ ФОН) ========== */
         .info-section {
-            background: linear-gradient(135deg, #0a1a0a 0%, #0d2a0d 50%, #0a1a0a 100%);
+            background: linear-gradient(135deg, #050a05 0%, #0a1508 50%, #050a05 100%);
             padding: 80px 20px;
             text-align: center;
         }
@@ -153,7 +154,7 @@
         .info-title {
             font-size: 2.5rem;
             margin-bottom: 20px;
-            background: linear-gradient(135deg, #c9ae5c, #6b8c42);
+            background: linear-gradient(135deg, #8ab860, #4a7a2e);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -167,18 +168,19 @@
         }
 
         .info-card {
-            background: rgba(15, 35, 15, 0.6);
+            background: rgba(5, 15, 5, 0.7);
             backdrop-filter: blur(10px);
             border-radius: 28px;
             padding: 30px 20px;
-            border: 1px solid rgba(100, 150, 50, 0.3);
+            border: 1px solid rgba(70, 120, 40, 0.3);
             transition: all 0.3s ease;
         }
 
         .info-card:hover {
             transform: translateY(-8px);
-            border-color: #8ab860;
-            box-shadow: 0 15px 35px rgba(50, 100, 30, 0.3);
+            border-color: #6b8c42;
+            box-shadow: 0 15px 35px rgba(30, 80, 20, 0.2);
+            background: rgba(10, 20, 8, 0.8);
         }
 
         .info-icon {
@@ -187,13 +189,13 @@
         }
 
         .info-card h3 {
-            color: #c9ae5c;
+            color: #8ab860;
             margin-bottom: 12px;
             font-size: 1.4rem;
         }
 
         .info-card p {
-            color: #c0d8a0;
+            color: #a8c898;
             line-height: 1.6;
         }
 
@@ -201,39 +203,40 @@
             display: inline-block;
             margin-top: 50px;
             padding: 14px 40px;
-            background: linear-gradient(135deg, #2a5a1a, #1a3a0a);
+            background: linear-gradient(135deg, #1a2a0a, #0a1a00);
             border-radius: 60px;
-            color: white;
+            color: #e8f0dc;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
-            border: 1px solid rgba(200, 180, 100, 0.4);
+            border: 1px solid rgba(100, 150, 50, 0.4);
         }
 
         .characters-link:hover {
             transform: translateY(-3px);
-            background: linear-gradient(135deg, #3a7a28, #2a5a18);
-            box-shadow: 0 10px 25px rgba(50, 120, 30, 0.4);
+            background: linear-gradient(135deg, #2a4a1a, #1a2a0a);
+            box-shadow: 0 10px 25px rgba(30, 80, 20, 0.3);
+            border-color: #6b8c42;
         }
 
         .footer {
             text-align: center;
             padding: 30px;
-            border-top: 1px solid rgba(100, 150, 50, 0.2);
-            color: #8aae70;
+            border-top: 1px solid rgba(70, 120, 40, 0.2);
+            color: #6a8a50;
             font-size: 0.8rem;
-            background: #0a1a0a;
+            background: #050a05;
         }
 
         ::-webkit-scrollbar {
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #0d2a0d;
+            background: #0a1508;
             border-radius: 10px;
         }
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, #2a5a1a, #4a7a2e);
+            background: linear-gradient(135deg, #2a4a1a, #4a7a2e);
             border-radius: 10px;
         }
 
@@ -257,9 +260,9 @@
         <div class="hero-content">
             <h1 class="hero-title">BELLWRIGHT</h1>
             <p class="hero-subtitle">
-                Не мертво то, что может лежать вечно.<br>
-                И в странные времена даже смерть может умереть.<br>
-                В своем доме в Р'льехе мертвый Ктулху ждет и видит сны.
+                That is not dead which can eternal lie.<br>
+                And with strange eons even death may die.<br>
+                In his house at R'lyeh, dead Cthulhu waits dreaming.
             </p>
             <a href="characters.html" class="hero-btn">📋 Управление персонажами</a>
         </div>
@@ -273,7 +276,7 @@
     <section class="info-section">
         <div class="info-container">
             <h2 class="info-title">⚔️ О игре Bellwright ⚔️</h2>
-            <p style="color: #c0d8a0; max-width: 700px; margin: 0 auto;">
+            <p style="color: #a8c898; max-width: 700px; margin: 0 auto;">
                 Bellwright — средневековая RPG с элементами выживания и строительства.  
                 Возглавьте восстание против тирании, стройте поселения и развивайте отряд.
             </p>
