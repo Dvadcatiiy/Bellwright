@@ -6,11 +6,7 @@
     <title>Bellwright | Управление персонажами</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.26.0/dist/tabler-icons.min.css">
     <style>
-        * {
-            box-sizing: border-box;
-            user-select: text;
-        }
-
+        * { box-sizing: border-box; user-select: text; }
         body {
             font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
             background: linear-gradient(135deg, #050a05 0%, #0a1508 50%, #050a05 100%);
@@ -19,20 +15,10 @@
             color: #e8f0dc;
             min-height: 100vh;
         }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0a1508;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, #2a4a1a, #4a7a2e);
-            border-radius: 10px;
-        }
-
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #0a1508; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(135deg, #2a4a1a, #4a7a2e); border-radius: 10px; }
+        
         .container {
             max-width: 1600px;
             margin: 0 auto;
@@ -42,14 +28,7 @@
             padding: 28px;
             border: 1px solid rgba(70, 120, 40, 0.4);
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
-
-        .container:hover {
-            border-color: rgba(100, 150, 50, 0.5);
-            box-shadow: 0 12px 40px rgba(30, 80, 20, 0.2);
-        }
-
         .back-link {
             display: inline-flex;
             align-items: center;
@@ -60,17 +39,7 @@
             font-size: 1.2rem;
             transition: all 0.3s ease;
         }
-
-        .back-link i {
-            font-size: 1.2rem;
-        }
-
-        .back-link:hover {
-            color: #c9ae5c;
-            transform: translateX(-4px);
-            text-shadow: 0 0 8px rgba(100, 150, 50, 0.3);
-        }
-
+        .back-link:hover { color: #c9ae5c; transform: translateX(-4px); }
         h1 {
             background: linear-gradient(135deg, #f0f5e8, #c9ae5c, #6b8c42, #2a5a1a);
             -webkit-background-clip: text;
@@ -78,20 +47,11 @@
             color: transparent;
             margin-bottom: 8px;
             font-size: 1.8rem;
-            font-weight: 700;
             display: flex;
             align-items: center;
             gap: 12px;
         }
-
-        h1 i {
-            font-size: 2rem;
-            color: #8ab860;
-            background: none;
-            -webkit-background-clip: unset;
-            background-clip: unset;
-        }
-
+        h1 i { font-size: 2rem; color: #8ab860; }
         .subtitle {
             color: #b8d4a0;
             margin-bottom: 24px;
@@ -102,12 +62,6 @@
             align-items: center;
             gap: 8px;
         }
-
-        .subtitle i {
-            font-size: 1rem;
-            color: #8ab860;
-        }
-
         .toolbar {
             background: rgba(8, 20, 8, 0.7);
             backdrop-filter: blur(8px);
@@ -121,7 +75,6 @@
             justify-content: space-between;
             border: 1px solid rgba(70, 120, 40, 0.35);
         }
-
         .btn {
             background: #1a2a0a;
             border: none;
@@ -136,64 +89,13 @@
             align-items: center;
             gap: 8px;
         }
-
-        .btn i {
-            font-size: 1.1rem;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #2a4a1a, #1a2a0a);
-            border: 1px solid rgba(100, 150, 50, 0.5);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            background: linear-gradient(135deg, #3a6a28, #2a4a1a);
-            box-shadow: 0 6px 20px rgba(30, 80, 20, 0.4);
-            border-color: #8ab860;
-        }
-
-        .btn-danger {
-            background: #5a2a3a;
-            border: 1px solid rgba(120, 60, 80, 0.3);
-        }
-
-        .btn-danger:hover {
-            background: #7a3a50;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(120, 60, 80, 0.3);
-            border-color: #a06080;
-        }
-
-        .btn-warning {
-            background: #5a4a1a;
-            border: 1px solid rgba(120, 100, 40, 0.3);
-        }
-
-        .btn-warning:hover {
-            background: #7a642a;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(120, 100, 40, 0.3);
-            border-color: #b09850;
-        }
-
-        .btn-success {
-            background: #1a4a2a;
-            border: 1px solid rgba(50, 100, 50, 0.3);
-        }
-
-        .btn-success:hover {
-            background: #2a6a3a;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(50, 120, 50, 0.3);
-            border-color: #4a8a5a;
-        }
-
-        .btn-sm {
-            padding: 4px 14px;
-            font-size: 12px;
-        }
-
+        .btn-primary { background: linear-gradient(135deg, #2a4a1a, #1a2a0a); border: 1px solid rgba(100, 150, 50, 0.5); }
+        .btn-primary:hover { transform: translateY(-2px); background: linear-gradient(135deg, #3a6a28, #2a4a1a); box-shadow: 0 6px 20px rgba(30, 80, 20, 0.4); }
+        .btn-warning { background: #5a4a1a; border: 1px solid rgba(120, 100, 40, 0.3); }
+        .btn-warning:hover { transform: translateY(-2px); background: #7a642a; box-shadow: 0 6px 20px rgba(120, 100, 40, 0.3); }
+        .btn-success { background: #1a4a2a; border: 1px solid rgba(50, 100, 50, 0.3); }
+        .btn-success:hover { transform: translateY(-2px); background: #2a6a3a; }
+        .btn-sm { padding: 4px 14px; font-size: 12px; }
         .filter-bar {
             background: rgba(8, 20, 8, 0.7);
             backdrop-filter: blur(8px);
@@ -202,7 +104,6 @@
             margin-bottom: 20px;
             border: 1px solid rgba(70, 120, 40, 0.35);
         }
-
         .filter-title {
             font-weight: 600;
             margin-bottom: 12px;
@@ -210,11 +111,8 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            font-family: 'Cinema', 'Georgia', 'Times New Roman', serif;
-            letter-spacing: 1px;
             font-size: 1.1rem;
         }
-
         .filter-row {
             display: flex;
             flex-wrap: wrap;
@@ -225,68 +123,30 @@
             padding: 10px;
             border-radius: 16px;
         }
-
-        .filter-item {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .filter-item label {
-            font-size: 11px;
-            color: #b8d4a0;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .filter-item select,
-        .filter-item input {
+        .filter-item { display: flex; flex-direction: column; gap: 5px; }
+        .filter-item label { font-size: 11px; color: #b8d4a0; display: flex; align-items: center; gap: 4px; }
+        .filter-item select, .filter-item input {
             background: #0a1a08;
             border: 1px solid #3a5a2a;
             padding: 6px 12px;
             border-radius: 12px;
             color: #e8f0dc;
             min-width: 120px;
-            transition: all 0.3s ease;
         }
-
-        .filter-item select:focus,
-        .filter-item input:focus {
+        .filter-item select:focus, .filter-item input:focus {
             outline: none;
             border-color: #8ab860;
             box-shadow: 0 0 0 2px rgba(100, 150, 50, 0.3);
         }
-
-        .filter-buttons {
-            display: flex;
-            gap: 10px;
-            margin-top: 12px;
-            flex-wrap: wrap;
-        }
-
+        .filter-buttons { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
         .table-wrapper {
             background: rgba(5, 15, 5, 0.5);
             border-radius: 20px;
             overflow-x: auto;
             padding: 5px;
-            transition: all 0.3s ease;
         }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 13px;
-            min-width: 1200px;
-        }
-
-        th, td {
-            padding: 12px 8px;
-            text-align: center;
-            border-bottom: 1px solid rgba(70, 120, 40, 0.25);
-            vertical-align: middle;
-        }
-
+        table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 1200px; }
+        th, td { padding: 12px 8px; text-align: center; border-bottom: 1px solid rgba(70, 120, 40, 0.25); }
         th {
             background: rgba(5, 15, 5, 0.8);
             color: #c9ae5c;
@@ -294,18 +154,9 @@
             position: sticky;
             top: 0;
             cursor: pointer;
-            transition: all 0.2s ease;
         }
-
-        th:hover {
-            background: rgba(15, 30, 12, 0.9);
-            color: #e8d5a3;
-        }
-
-        td {
-            background: rgba(8, 20, 8, 0.4);
-        }
-
+        th:hover { background: rgba(15, 30, 12, 0.9); color: #e8d5a3; }
+        td { background: rgba(8, 20, 8, 0.4); }
         input.editable {
             background: #0a1a08;
             border: 1px solid #3a5a2a;
@@ -315,15 +166,8 @@
             width: 100%;
             text-align: center;
             font-size: 12px;
-            transition: all 0.3s ease;
         }
-
-        input.editable:focus {
-            outline: none;
-            border-color: #8ab860;
-            box-shadow: 0 0 0 2px rgba(100, 150, 50, 0.3);
-        }
-
+        input.editable:focus { outline: none; border-color: #8ab860; }
         .delete-row {
             background: #5a2a3a;
             border: none;
@@ -334,13 +178,7 @@
             font-size: 11px;
             transition: all 0.3s ease;
         }
-
-        .delete-row:hover {
-            background: #8a3a5a;
-            transform: scale(1.05);
-            box-shadow: 0 0 8px rgba(120, 60, 80, 0.4);
-        }
-
+        .delete-row:hover { background: #8a3a5a; transform: scale(1.05); }
         .add-row {
             margin-top: 15px;
             background: linear-gradient(135deg, #2a4a1a, #1a2a0a);
@@ -352,28 +190,14 @@
             width: 100%;
             font-size: 14px;
             font-weight: bold;
-            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
+            transition: all 0.3s ease;
         }
-
-        .add-row:hover {
-            transform: translateY(-2px);
-            background: linear-gradient(135deg, #3a6a28, #2a4a1a);
-            box-shadow: 0 6px 20px rgba(30, 80, 20, 0.4);
-            border-color: #8ab860;
-        }
-
-        .count-info {
-            margin: 15px 0 10px;
-            color: #b8d4a0;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
+        .add-row:hover { transform: translateY(-2px); background: linear-gradient(135deg, #3a6a28, #2a4a1a); box-shadow: 0 6px 20px rgba(30, 80, 20, 0.4); }
+        .count-info { margin: 15px 0 10px; color: #b8d4a0; display: flex; align-items: center; gap: 8px; }
         .status-bar {
             background: rgba(8, 20, 8, 0.6);
             backdrop-filter: blur(8px);
@@ -387,23 +211,11 @@
             align-items: center;
             border: 1px solid rgba(70, 120, 40, 0.3);
         }
-
-        .sync-status {
-            font-size: 12px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
+        .sync-status { font-size: 12px; display: flex; align-items: center; gap: 5px; }
         .sync-status.synced { color: #8ab860; }
         .sync-status.syncing { color: #c9ae5c; animation: pulse 1s infinite; }
         .sync-status.error { color: #c97a5a; }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
+        @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
         .remove-filter {
             background: #5a2a3a;
             border: none;
@@ -412,49 +224,21 @@
             cursor: pointer;
             padding: 6px 14px;
             font-size: 12px;
-            align-self: flex-end;
             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
             gap: 5px;
         }
-
-        .remove-filter:hover {
-            background: #8a3a5a;
-            transform: scale(1.02);
-        }
-
-        .filter-group {
-            background: rgba(5, 15, 5, 0.6);
-            border-radius: 16px;
-            padding: 12px;
-            margin-bottom: 12px;
-        }
-
-        @media (max-width: 768px) {
-            body { padding: 12px; }
-            .container { padding: 16px; }
-            .toolbar { flex-direction: column; align-items: stretch; }
-            .btn { justify-content: center; }
-            h1 { font-size: 1.4rem; }
-            h1 i { font-size: 1.5rem; }
-        }
+        .remove-filter:hover { background: #8a3a5a; }
+        .filter-group { background: rgba(5, 15, 5, 0.6); border-radius: 16px; padding: 12px; margin-bottom: 12px; }
+        @media (max-width: 768px) { body { padding: 12px; } .container { padding: 16px; } .toolbar { flex-direction: column; align-items: stretch; } .btn { justify-content: center; } h1 { font-size: 1.4rem; } }
     </style>
 </head>
 <body>
 <div class="container">
-    <a href="index.html" class="back-link">
-        <i class="ti ti-arrow-left"></i>
-        Вернуться на главную
-    </a>
-    <h1>
-        <i class="ti ti-brand-powers"></i>
-        Управление персонажами | Bellwright
-    </h1>
-    <div class="subtitle">
-        <i class="ti ti-plant-2"></i>
-        Боевые + Рабочие характеристики | Продвинутая фильтрация | Эльфийское издание
-    </div>
+    <a href="index.html" class="back-link"><i class="ti ti-arrow-left"></i> Вернуться на главную</a>
+    <h1><i class="ti ti-brand-powers"></i> Управление персонажами | Bellwright</h1>
+    <div class="subtitle"><i class="ti ti-plant-2"></i> Боевые + Рабочие характеристики | Продвинутая фильтрация | Эльфийское издание</div>
 
     <div class="toolbar">
         <div style="display: flex; gap: 12px; flex-wrap: wrap;">
@@ -490,6 +274,7 @@
 </div>
 
 <script>
+    // ========== НАСТРОЙКИ AIRTABLE ==========
     const AIRTABLE_TOKEN = "patgpOhBn6qUXAi6c.34109e4d9347196a93184b1fb1e715690d5a6b928bdc5e286a437da8fbb9a1a7";
     const AIRTABLE_BASE_ID = "apppJkdRTfpV08cEZ";
     const AIRTABLE_TABLE_NAME = "Table 1";
@@ -591,11 +376,11 @@
                     let value = ch[col] !== undefined && ch[col] !== null ? ch[col] : "";
                     html += `<td><input type="text" class="editable" value="${escapeHtml(value)}" data-col="${col}" data-rowidx="${idx}">`;
                 });
-                html += `<td><button class="delete-row" data-rowidx="${idx}"><i class="ti ti-trash"></i></button></td>`;
+                html += `<td><button class="delete-row" data-rowidx="${idx}"><i class="ti ti-trash"></i></button>`;
                 html += `</tr>`;
             }
         }
-        html += `</tbody><table>`;
+        html += `</tbody></table>`;
         wrapper.innerHTML = html;
 
         document.getElementById("countInfo").innerHTML = `<i class="ti ti-users"></i> <span>📊 Показано: ${filteredIndices.length} из ${characters.length} персонажей</span>`;
@@ -793,4 +578,131 @@
 
     async function handleDelete(e) {
         const rowIdx = parseInt(this.getAttribute('data-rowidx'));
-        if (confirm(`Удалить персонажа
+        if (confirm(`Удалить персонажа "${characters[rowIdx]?.Прозвище}"?`)) {
+            const character = characters[rowIdx];
+            characters.splice(rowIdx, 1);
+            await deleteFromAirtable(character);
+            renumberRows();
+            await syncAllToAirtable();
+            applyFilters();
+            updateStatus("🗑️ Персонаж удалён", "synced");
+        }
+    }
+
+    async function addNewCharacter() {
+        const newChar = {};
+        COLUMNS.forEach(col => {
+            if (col === "№") newChar[col] = characters.length + 1;
+            else if (col === "Прозвище") newChar[col] = "Новый персонаж";
+            else if (col === "Рабочий") newChar[col] = "Нет";
+            else if (col === "Исследует") newChar[col] = "Ничего";
+            else newChar[col] = "1/1";
+        });
+        characters.push(newChar);
+        renumberRows();
+        await saveToAirtable(newChar);
+        applyFilters();
+        updateStatus("✨ Новый персонаж добавлен", "synced");
+    }
+
+    async function resetToDemo() {
+        if (confirm("Сбросить к демо-данным? Все текущие персонажи будут удалены из Airtable!")) {
+            characters = getDefaultCharacters();
+            renumberRows();
+            airtableRecords = {};
+            await syncAllToAirtable();
+            resetAllFilters();
+            updateStatus("🎮 Сброшено к демо", "synced");
+        }
+    }
+
+    function exportToCSV() {
+        let csvRows = [COLUMNS.join(",")];
+        for (let ch of characters) {
+            let row = COLUMNS.map(col => {
+                let val = ch[col]?.toString() || "";
+                if (val.includes(",") || val.includes('"')) val = `"${val.replace(/"/g, '""')}"`;
+                return val;
+            }).join(",");
+            csvRows.push(row);
+        }
+        const blob = new Blob(["\uFEFF" + csvRows.join("\n")], { type: "text/csv;charset=utf-8;" });
+        const link = document.createElement("a");
+        const url = URL.createObjectURL(blob);
+        link.href = url;
+        link.setAttribute("download", "characters.csv");
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+    }
+
+    function importCSV(file) {
+        const reader = new FileReader();
+        reader.onload = async function(e) {
+            const text = e.target.result;
+            const rows = text.split(/\r?\n/);
+            if (rows.length < 2) { alert("Файл пустой"); return; }
+            const headers = rows[0].split(",").map(h => h.replace(/^"|"$/g, '').trim());
+            const newChars = [];
+            for (let i = 1; i < rows.length; i++) {
+                if (!rows[i].trim()) continue;
+                const values = [];
+                let inQuote = false, current = "";
+                for (let ch of rows[i]) {
+                    if (ch === '"') inQuote = !inQuote;
+                    else if (ch === ',' && !inQuote) { values.push(current); current = ""; }
+                    else current += ch;
+                }
+                values.push(current);
+                const cleanedValues = values.map(v => v.replace(/^"|"$/g, '').trim());
+                let obj = {};
+                headers.forEach((h, idx) => { obj[h] = cleanedValues[idx] || ""; });
+                if (Object.keys(obj).length > 0) newChars.push(obj);
+            }
+            if (newChars.length) {
+                characters = newChars;
+                renumberRows();
+                airtableRecords = {};
+                await syncAllToAirtable();
+                resetAllFilters();
+                alert(`Импортировано ${characters.length} персонажей`);
+            } else alert("Не удалось распознать данные");
+        };
+        reader.readAsText(file, "UTF-8");
+    }
+
+    window.sortByColumn = function(col) {
+        characters.sort((a,b) => {
+            let valA = a[col]?.toString() || "";
+            let valB = b[col]?.toString() || "";
+            return valA.localeCompare(valB, undefined, { numeric: true });
+        });
+        renumberRows();
+        syncAllToAirtable();
+        applyFilters();
+    };
+
+    async function syncFromAirtable() { await loadFromAirtable(); applyFilters(); }
+
+    document.getElementById("addFilterBtn")?.addEventListener("click", addFilterCondition);
+    document.getElementById("applyFiltersBtn")?.addEventListener("click", applyFilters);
+    document.getElementById("resetFiltersBtn")?.addEventListener("click", resetAllFilters);
+    document.getElementById("clearAllFiltersBtn")?.addEventListener("click", resetAllFilters);
+    document.getElementById("addRowBtn")?.addEventListener("click", addNewCharacter);
+    document.getElementById("exportBtn")?.addEventListener("click", exportToCSV);
+    document.getElementById("importBtn")?.addEventListener("click", () => document.getElementById("importFile").click());
+    document.getElementById("importFile")?.addEventListener("change", (e) => { if (e.target.files[0]) importCSV(e.target.files[0]); });
+    document.getElementById("resetDemoBtn")?.addEventListener("click", resetToDemo);
+    document.getElementById("syncNowBtn")?.addEventListener("click", syncFromAirtable);
+
+    async function init() {
+        await loadFromAirtable();
+        buildFiltersUI();
+        applyFilters();
+        setInterval(() => syncFromAirtable(), 30000);
+    }
+    init();
+</script>
+</body>
+</html>
