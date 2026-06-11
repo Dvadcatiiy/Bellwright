@@ -38,6 +38,13 @@
             text-decoration: none;
             font-size: 1.2rem;
             transition: all 0.3s ease;
+            vertical-align: middle;
+        }
+        .back-link i {
+            font-size: 1.2rem;
+            display: inline-flex;
+            align-items: center;
+            line-height: 1;
         }
         .back-link:hover { color: #c9ae5c; transform: translateX(-4px); }
         h1 {
@@ -496,10 +503,10 @@
                 await syncAllToAirtable();
             }
             renumberRows();
-            updateStatus(`✅ Загружено ${characters.length} персонажей`, "synced");
+            updateStatus(` Загружено ${characters.length} персонажей`, "synced");
             return true;
         } catch (error) {
-            updateStatus(`⚠️ Ошибка: ${error.message}`, "error");
+            updateStatus(` Ошибка: ${error.message}`, "error");
             return false;
         }
     }
@@ -545,7 +552,7 @@
         isSaving = true;
         updateStatus("Синхронизация...", "syncing");
         for (const char of characters) await saveToAirtable(char);
-        updateStatus("✅ Синхронизация завершена", "synced");
+        updateStatus(" Синхронизация завершена", "synced");
         isSaving = false;
     }
 
@@ -572,7 +579,7 @@
             renumberRows();
             await saveToAirtable(characters[rowIdx]);
             applyFilters();
-            updateStatus("✏️ Изменения сохранены", "synced");
+            updateStatus(" Изменения сохранены", "synced");
         }
     }
 
@@ -602,7 +609,7 @@
         renumberRows();
         await saveToAirtable(newChar);
         applyFilters();
-        updateStatus("✨ Новый персонаж добавлен", "synced");
+        updateStatus(" Новый персонаж добавлен", "synced");
     }
 
     async function resetToDemo() {
@@ -612,7 +619,7 @@
             airtableRecords = {};
             await syncAllToAirtable();
             resetAllFilters();
-            updateStatus("🎮 Сброшено к демо", "synced");
+            updateStatus(" Сброшено к демо", "synced");
         }
     }
 
