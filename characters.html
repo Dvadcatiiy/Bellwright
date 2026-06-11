@@ -79,6 +79,17 @@
             margin-bottom: 8px;
             font-size: 1.8rem;
             font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        h1 i {
+            font-size: 2rem;
+            color: #8ab860;
+            background: none;
+            -webkit-background-clip: unset;
+            background-clip: unset;
         }
 
         .subtitle {
@@ -87,6 +98,14 @@
             font-size: 0.9rem;
             border-left: 3px solid #6b8c42;
             padding-left: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .subtitle i {
+            font-size: 1rem;
+            color: #8ab860;
         }
 
         .toolbar {
@@ -191,6 +210,9 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            font-family: 'Cinema', 'Georgia', 'Times New Roman', serif;
+            letter-spacing: 1px;
+            font-size: 1.1rem;
         }
 
         .filter-row {
@@ -415,6 +437,7 @@
             .toolbar { flex-direction: column; align-items: stretch; }
             .btn { justify-content: center; }
             h1 { font-size: 1.4rem; }
+            h1 i { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -424,8 +447,14 @@
         <i class="ti ti-arrow-left"></i>
         Вернуться на главную
     </a>
-    <h1>⚔️ Управление персонажами (Bellwright)</h1>
-    <div class="subtitle">Боевые + Рабочие характеристики | Продвинутая фильтрация | Эльфийское издание 🌿</div>
+    <h1>
+        <i class="ti ti-brand-powers"></i>
+        Управление персонажами | Bellwright
+    </h1>
+    <div class="subtitle">
+        <i class="ti ti-plant-2"></i>
+        Боевые + Рабочие характеристики | Продвинутая фильтрация | Эльфийское издание
+    </div>
 
     <div class="toolbar">
         <div style="display: flex; gap: 12px; flex-wrap: wrap;">
@@ -446,12 +475,12 @@
     </div>
 
     <div class="filter-bar">
-        <div class="filter-title"><i class="ti ti-filter"></i> Продвинутый фильтр (по любым параметрам)</div>
+        <div class="filter-title"><i class="ti ti-filter"></i> Фильтр</div>
         <div id="filtersContainer"></div>
         <div class="filter-buttons">
             <button class="btn btn-success btn-sm" id="addFilterBtn"><i class="ti ti-plus"></i> Добавить условие</button>
             <button class="btn btn-primary btn-sm" id="applyFiltersBtn"><i class="ti ti-check"></i> Применить фильтры</button>
-            <button class="btn btn-sm" id="resetFiltersBtn"><i class="ti ti-x"></i> Сбросить фильтры</button>
+            <button class="btn btn-warning btn-sm" id="resetFiltersBtn"><i class="ti ti-x"></i> Сбросить фильтры</button>
         </div>
     </div>
 
@@ -553,7 +582,7 @@
         html += `<th>🗑️</th></tr></thead><tbody>`;
 
         if (filteredIndices.length === 0) {
-            html += `<tr><td colspan="${COLUMNS.length+1}" style="text-align:center;">😔 Нет персонажей, соответствующих фильтрам</td></tr>`;
+            html += `<tr><td colspan="${COLUMNS.length+1}" style="text-align:center;"><i class="ti ti-sparkles"></i> Нет персонажей, соответствующих фильтрам</td></tr>`;
         } else {
             for (let idx of filteredIndices) {
                 let ch = characters[idx];
@@ -562,11 +591,11 @@
                     let value = ch[col] !== undefined && ch[col] !== null ? ch[col] : "";
                     html += `<td><input type="text" class="editable" value="${escapeHtml(value)}" data-col="${col}" data-rowidx="${idx}">`;
                 });
-                html += `<td><button class="delete-row" data-rowidx="${idx}"><i class="ti ti-trash"></i> ❌</button></td>`;
+                html += `<td><button class="delete-row" data-rowidx="${idx}"><i class="ti ti-trash"></i></button></td>`;
                 html += `</tr>`;
             }
         }
-        html += `</tbody></table>`;
+        html += `</tbody><table>`;
         wrapper.innerHTML = html;
 
         document.getElementById("countInfo").innerHTML = `<i class="ti ti-users"></i> <span>📊 Показано: ${filteredIndices.length} из ${characters.length} персонажей</span>`;
@@ -585,7 +614,7 @@
         const container = document.getElementById("filtersContainer");
         if (!container) return;
         if (filterConditions.length === 0) {
-            container.innerHTML = '<div style="color: #b8d4a0; padding: 10px;"><i class="ti ti-filter"></i> ✨ Нет активных фильтров. Нажмите "+ Добавить условие" ✨</div>';
+            container.innerHTML = '<div style="color: #b8d4a0; padding: 10px;"><i class="ti ti-sparkles"></i> Нет активных фильтров. Нажмите "+ Добавить условие"</div>';
             return;
         }
         container.innerHTML = "";
@@ -661,7 +690,7 @@
     }
 
     async function loadFromAirtable() {
-        updateStatus("📡 Загрузка из Airtable...", "syncing");
+        updateStatus("Загрузка из Airtable...", "syncing");
         try {
             const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${encodeURIComponent(AIRTABLE_TABLE_NAME)}?sort[0][field]=№&sort[0][direction]=asc`;
             const response = await fetch(url, { headers: { "Authorization": `Bearer ${AIRTABLE_TOKEN}` } });
@@ -729,7 +758,7 @@
     async function syncAllToAirtable() {
         if (isSaving) return;
         isSaving = true;
-        updateStatus("💾 Синхронизация...", "syncing");
+        updateStatus("Синхронизация...", "syncing");
         for (const char of characters) await saveToAirtable(char);
         updateStatus("✅ Синхронизация завершена", "synced");
         isSaving = false;
@@ -764,131 +793,4 @@
 
     async function handleDelete(e) {
         const rowIdx = parseInt(this.getAttribute('data-rowidx'));
-        if (confirm(`Удалить персонажа "${characters[rowIdx]?.Прозвище}"?`)) {
-            const character = characters[rowIdx];
-            characters.splice(rowIdx, 1);
-            await deleteFromAirtable(character);
-            renumberRows();
-            await syncAllToAirtable();
-            applyFilters();
-            updateStatus("🗑️ Персонаж удалён", "synced");
-        }
-    }
-
-    async function addNewCharacter() {
-        const newChar = {};
-        COLUMNS.forEach(col => {
-            if (col === "№") newChar[col] = characters.length + 1;
-            else if (col === "Прозвище") newChar[col] = "Новый персонаж";
-            else if (col === "Рабочий") newChar[col] = "Нет";
-            else if (col === "Исследует") newChar[col] = "Ничего";
-            else newChar[col] = "1/1";
-        });
-        characters.push(newChar);
-        renumberRows();
-        await saveToAirtable(newChar);
-        applyFilters();
-        updateStatus("✨ Новый персонаж добавлен", "synced");
-    }
-
-    async function resetToDemo() {
-        if (confirm("Сбросить к демо-данным? Все текущие персонажи будут удалены из Airtable!")) {
-            characters = getDefaultCharacters();
-            renumberRows();
-            airtableRecords = {};
-            await syncAllToAirtable();
-            resetAllFilters();
-            updateStatus("🎮 Сброшено к демо", "synced");
-        }
-    }
-
-    function exportToCSV() {
-        let csvRows = [COLUMNS.join(",")];
-        for (let ch of characters) {
-            let row = COLUMNS.map(col => {
-                let val = ch[col]?.toString() || "";
-                if (val.includes(",") || val.includes('"')) val = `"${val.replace(/"/g, '""')}"`;
-                return val;
-            }).join(",");
-            csvRows.push(row);
-        }
-        const blob = new Blob(["\uFEFF" + csvRows.join("\n")], { type: "text/csv;charset=utf-8;" });
-        const link = document.createElement("a");
-        const url = URL.createObjectURL(blob);
-        link.href = url;
-        link.setAttribute("download", "characters.csv");
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        URL.revokeObjectURL(url);
-    }
-
-    function importCSV(file) {
-        const reader = new FileReader();
-        reader.onload = async function(e) {
-            const text = e.target.result;
-            const rows = text.split(/\r?\n/);
-            if (rows.length < 2) { alert("Файл пустой"); return; }
-            const headers = rows[0].split(",").map(h => h.replace(/^"|"$/g, '').trim());
-            const newChars = [];
-            for (let i = 1; i < rows.length; i++) {
-                if (!rows[i].trim()) continue;
-                const values = [];
-                let inQuote = false, current = "";
-                for (let ch of rows[i]) {
-                    if (ch === '"') inQuote = !inQuote;
-                    else if (ch === ',' && !inQuote) { values.push(current); current = ""; }
-                    else current += ch;
-                }
-                values.push(current);
-                const cleanedValues = values.map(v => v.replace(/^"|"$/g, '').trim());
-                let obj = {};
-                headers.forEach((h, idx) => { obj[h] = cleanedValues[idx] || ""; });
-                if (Object.keys(obj).length > 0) newChars.push(obj);
-            }
-            if (newChars.length) {
-                characters = newChars;
-                renumberRows();
-                airtableRecords = {};
-                await syncAllToAirtable();
-                resetAllFilters();
-                alert(`Импортировано ${characters.length} персонажей`);
-            } else alert("Не удалось распознать данные");
-        };
-        reader.readAsText(file, "UTF-8");
-    }
-
-    window.sortByColumn = function(col) {
-        characters.sort((a,b) => {
-            let valA = a[col]?.toString() || "";
-            let valB = b[col]?.toString() || "";
-            return valA.localeCompare(valB, undefined, { numeric: true });
-        });
-        renumberRows();
-        syncAllToAirtable();
-        applyFilters();
-    };
-
-    async function syncFromAirtable() { await loadFromAirtable(); applyFilters(); }
-
-    document.getElementById("addFilterBtn")?.addEventListener("click", addFilterCondition);
-    document.getElementById("applyFiltersBtn")?.addEventListener("click", applyFilters);
-    document.getElementById("resetFiltersBtn")?.addEventListener("click", resetAllFilters);
-    document.getElementById("clearAllFiltersBtn")?.addEventListener("click", resetAllFilters);
-    document.getElementById("addRowBtn")?.addEventListener("click", addNewCharacter);
-    document.getElementById("exportBtn")?.addEventListener("click", exportToCSV);
-    document.getElementById("importBtn")?.addEventListener("click", () => document.getElementById("importFile").click());
-    document.getElementById("importFile")?.addEventListener("change", (e) => { if (e.target.files[0]) importCSV(e.target.files[0]); });
-    document.getElementById("resetDemoBtn")?.addEventListener("click", resetToDemo);
-    document.getElementById("syncNowBtn")?.addEventListener("click", syncFromAirtable);
-
-    async function init() {
-        await loadFromAirtable();
-        buildFiltersUI();
-        applyFilters();
-        setInterval(() => syncFromAirtable(), 30000);
-    }
-    init();
-</script>
-</body>
-</html>
+        if (confirm(`Удалить персонажа
