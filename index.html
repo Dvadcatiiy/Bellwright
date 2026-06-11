@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Bellwright | Эльфийский лес</title>
-    <!-- ПОДКЛЮЧАЕМ TABLER ICONS ПРАВИЛЬНО -->
+    <!-- Tabler Icons (стабильная версия) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.26.0/dist/tabler-icons.min.css">
     <style>
         * {
@@ -173,12 +173,10 @@
             font-weight: 500;
         }
 
-        /* Кнопка БЕЗ иконок и эмодзи — только текст */
         .hero-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0;
             padding: 16px 48px;
             font-size: 1.1rem;
             font-weight: 800;
@@ -242,6 +240,7 @@
             margin: 0 auto;
         }
 
+        /* Заголовок с эльфийскими рунами вместо мечей */
         .info-title {
             font-size: 2.6rem;
             margin-bottom: 20px;
@@ -250,6 +249,17 @@
             background-clip: text;
             color: transparent;
             font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .info-title .title-icon {
+            font-size: 2.2rem;
+            color: #8ab860;
+            filter: drop-shadow(0 0 4px rgba(100, 150, 50, 0.5));
         }
 
         .info-description {
@@ -281,7 +291,6 @@
             background: rgba(12, 24, 10, 0.85);
         }
 
-        /* Стили для красивых иконок */
         .info-icon {
             font-size: 3rem;
             margin-bottom: 15px;
@@ -363,20 +372,17 @@
             .hero-title { font-size: 2.8rem; letter-spacing: 5px; }
             .hero-subtitle { font-size: 1rem; margin-bottom: 28px; }
             .hero-btn { padding: 12px 28px; font-size: 0.9rem; }
-            .info-title { font-size: 2rem; }
+            .info-title { font-size: 2rem; gap: 12px; }
+            .info-title .title-icon { font-size: 1.6rem; }
             .info-section { padding: 50px 16px; }
-            .info-icon {
-                font-size: 2.5rem;
-            }
+            .info-icon { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ПАДАЮЩИЕ ЛИСТЬЯ -->
     <div class="leaves-container" id="leavesContainer"></div>
 
-    <!-- МЕНЮ -->
     <div class="menu">
         <a href="#" class="menu-link">Главная</a>
         <a href="characters.html" class="menu-link">Персонажи</a>
@@ -384,7 +390,6 @@
         <a href="#" class="menu-link">Гайды</a>
     </div>
 
-    <!-- ВИДЕОФОН НА ВЕСЬ ЭКРАН -->
     <section class="hero" id="hero">
         <video class="hero-video" autoplay loop muted playsinline>
             <source src="dragon.mp4" type="video/mp4">
@@ -405,52 +410,56 @@
         </div>
     </section>
 
-    <!-- ОСНОВНАЯ ИНФОРМАЦИЯ С КРАСИВЫМИ ИКОНКАМИ -->
     <section class="info-section">
         <div class="info-container">
-            <h2 class="info-title">⚔️ О игре Bellwright ⚔️</h2>
+            <!-- Заголовок с эльфийскими рунами вместо мечей -->
+            <h2 class="info-title">
+                <i class="ti ti-plant-2 title-icon"></i>
+                О игре Bellwright
+                <i class="ti ti-plant-2 title-icon"></i>
+            </h2>
             <p class="info-description">
                 Bellwright — средневековая RPG с элементами выживания и строительства.  
                 Возглавьте восстание против тирании, стройте поселения и развивайте отряд.
             </p>
 
             <div class="info-grid">
-                <!-- Боевая система: иконка меча -->
+                <!-- Боевая система -->
                 <div class="info-card">
                     <div class="info-icon"><i class="ti ti-sword"></i></div>
                     <h3>Боевая система</h3>
                     <p>Одноручное, двуручное, древковое оружие, луки и арбалеты. Реалистичные сражения.</p>
                 </div>
                 
-                <!-- Строительство: иконка замка -->
+                <!-- Строительство — ИСПРАВЛЕНО -->
                 <div class="info-card">
-                    <div class="info-icon"><i class="ti ti-castle"></i></div>
+                    <div class="info-icon"><i class="ti ti-building-castle"></i></div>
                     <h3>Строительство</h3>
                     <p>Стройте лагеря, развивайте деревни, создавайте оружие и доспехи.</p>
                 </div>
                 
-                <!-- Управление отрядом: иконка группы людей -->
+                <!-- Управление отрядом -->
                 <div class="info-card">
                     <div class="info-icon"><i class="ti ti-users-group"></i></div>
                     <h3>Управление отрядом</h3>
                     <p>Нанимайте соратников, тренируйте их и развивайте навыки каждого бойца.</p>
                 </div>
                 
-                <!-- Экономика: иконка листа / роста -->
+                <!-- Экономика -->
                 <div class="info-card">
                     <div class="info-icon"><i class="ti ti-leaf"></i></div>
                     <h3>Экономика</h3>
                     <p>Земледелие, скотоводство, сбор ресурсов и торговля с соседями.</p>
                 </div>
                 
-                <!-- Сюжет: иконка свитка (квесты) -->
+                <!-- Сюжет — ИСПРАВЛЕНО -->
                 <div class="info-card">
-                    <div class="info-icon"><i class="ti ti-scroll"></i></div>
+                    <div class="info-icon"><i class="ti ti-book"></i></div>
                     <h3>Сюжет</h3>
                     <p>Освобождайте территории, сражайтесь с бандитами и королевскими стражниками.</p>
                 </div>
                 
-                <!-- Открытый мир: иконка глобуса/карты -->
+                <!-- Открытый мир -->
                 <div class="info-card">
                     <div class="info-icon"><i class="ti ti-world"></i></div>
                     <h3>Открытый мир</h3>
@@ -468,36 +477,29 @@
     </footer>
 
     <script>
-        // Плавный скролл
         document.querySelector('.scroll-hint')?.addEventListener('click', () => {
             document.querySelector('.info-section').scrollIntoView({ behavior: 'smooth' });
         });
 
-        // ГЕНЕРАЦИЯ ПАДАЮЩИХ ЛИСТЬЕВ
         function createLeaves() {
             const container = document.getElementById('leavesContainer');
             const leafCount = 45;
-            
             for (let i = 0; i < leafCount; i++) {
                 const leaf = document.createElement('div');
                 leaf.classList.add('leaf');
-                
                 const size = Math.random() * 24 + 10;
                 const left = Math.random() * 100;
                 const duration = Math.random() * 10 + 5;
                 const delay = Math.random() * 18;
                 const opacity = Math.random() * 0.55 + 0.25;
-                
                 leaf.style.setProperty('--x', left + '%');
                 leaf.style.setProperty('--size', size + 'px');
                 leaf.style.setProperty('--duration', duration + 's');
                 leaf.style.setProperty('--delay', delay + 's');
                 leaf.style.setProperty('--opacity', opacity);
-                
                 container.appendChild(leaf);
             }
         }
-        
         createLeaves();
     </script>
 </body>
