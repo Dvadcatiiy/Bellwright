@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Bellwright | Эльфийский лес</title>
-    <!-- Подключаем библиотеку красивых иконок Tabler Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler-icons-webfont@latest/tabler-icons.min.css">
+    <!-- ПОДКЛЮЧАЕМ TABLER ICONS ПРАВИЛЬНО -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.26.0/dist/tabler-icons.min.css">
     <style>
         * {
             margin: 0;
@@ -173,10 +173,12 @@
             font-weight: 500;
         }
 
+        /* Кнопка БЕЗ иконок и эмодзи — только текст */
         .hero-btn {
             display: inline-flex;
             align-items: center;
-            gap: 14px;
+            justify-content: center;
+            gap: 0;
             padding: 16px 48px;
             font-size: 1.1rem;
             font-weight: 800;
@@ -360,7 +362,7 @@
             }
             .hero-title { font-size: 2.8rem; letter-spacing: 5px; }
             .hero-subtitle { font-size: 1rem; margin-bottom: 28px; }
-            .hero-btn { padding: 12px 28px; font-size: 0.9rem; gap: 8px; }
+            .hero-btn { padding: 12px 28px; font-size: 0.9rem; }
             .info-title { font-size: 2rem; }
             .info-section { padding: 50px 16px; }
             .info-icon {
@@ -395,7 +397,7 @@
                 В странных эонах даже смерть может угаснуть.<br>
                 В своём доме в Р'лайе мёртвый Ктулху ждёт во сне.
             </p>
-            <a href="characters.html" class="hero-btn"> Управление персонажами</a>
+            <a href="characters.html" class="hero-btn">Управление персонажами</a>
         </div>
         <div class="scroll-hint" onclick="document.querySelector('.info-section').scrollIntoView({behavior: 'smooth'})">
             <span>▼</span>
@@ -456,7 +458,7 @@
                 </div>
             </div>
 
-            <a href="characters.html" class="characters-link">📋 Перейти к управлению персонажами</a>
+            <a href="characters.html" class="characters-link">Перейти к управлению персонажами</a>
         </div>
     </section>
 
