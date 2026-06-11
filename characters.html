@@ -390,7 +390,7 @@
         html += `</tbody></table>`;
         wrapper.innerHTML = html;
 
-        document.getElementById("countInfo").innerHTML = `<i class="ti ti-users"></i> <span>📊 Показано: ${filteredIndices.length} из ${characters.length} персонажей</span>`;
+        document.getElementById("countInfo").innerHTML = `<i class="ti ti-users"></i> <span> Показано: ${filteredIndices.length} из ${characters.length} персонажей</span>`;
 
         document.querySelectorAll('.editable').forEach(inp => {
             inp.removeEventListener('change', handleEdit);
