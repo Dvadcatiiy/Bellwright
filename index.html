@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Bellwright | Эльфийский лес</title>
+    <!-- Подключаем библиотеку красивых иконок Tabler Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler-icons-webfont@latest/tabler-icons.min.css">
     <style>
         * {
             margin: 0;
@@ -81,7 +83,6 @@
             padding: 4px 0;
         }
 
-        /* Эффект подчёркивания при наведении */
         .menu-link::after {
             content: '';
             position: absolute;
@@ -278,9 +279,18 @@
             background: rgba(12, 24, 10, 0.85);
         }
 
+        /* Стили для красивых иконок */
         .info-icon {
             font-size: 3rem;
             margin-bottom: 15px;
+            display: inline-block;
+            color: #c9ae5c;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .info-card:hover .info-icon {
+            transform: scale(1.1);
+            color: #e8d5a3;
         }
 
         .info-card h3 {
@@ -353,6 +363,9 @@
             .hero-btn { padding: 12px 28px; font-size: 0.9rem; gap: 8px; }
             .info-title { font-size: 2rem; }
             .info-section { padding: 50px 16px; }
+            .info-icon {
+                font-size: 2.5rem;
+            }
         }
     </style>
 </head>
@@ -361,7 +374,7 @@
     <!-- ПАДАЮЩИЕ ЛИСТЬЯ -->
     <div class="leaves-container" id="leavesContainer"></div>
 
-    <!-- МЕНЮ (ПРАВЫЙ ВЕРХНИЙ УГОЛ, БЕЗ ФОНА) -->
+    <!-- МЕНЮ -->
     <div class="menu">
         <a href="#" class="menu-link">Главная</a>
         <a href="characters.html" class="menu-link">Персонажи</a>
@@ -390,7 +403,7 @@
         </div>
     </section>
 
-    <!-- ОСНОВНАЯ ИНФОРМАЦИЯ -->
+    <!-- ОСНОВНАЯ ИНФОРМАЦИЯ С КРАСИВЫМИ ИКОНКАМИ -->
     <section class="info-section">
         <div class="info-container">
             <h2 class="info-title">⚔️ О игре Bellwright ⚔️</h2>
@@ -400,33 +413,44 @@
             </p>
 
             <div class="info-grid">
+                <!-- Боевая система: иконка меча -->
                 <div class="info-card">
-                    <div class="info-icon">⚔️</div>
+                    <div class="info-icon"><i class="ti ti-sword"></i></div>
                     <h3>Боевая система</h3>
                     <p>Одноручное, двуручное, древковое оружие, луки и арбалеты. Реалистичные сражения.</p>
                 </div>
+                
+                <!-- Строительство: иконка замка -->
                 <div class="info-card">
-                    <div class="info-icon">🏠</div>
+                    <div class="info-icon"><i class="ti ti-castle"></i></div>
                     <h3>Строительство</h3>
                     <p>Стройте лагеря, развивайте деревни, создавайте оружие и доспехи.</p>
                 </div>
+                
+                <!-- Управление отрядом: иконка группы людей -->
                 <div class="info-card">
-                    <div class="info-icon">👥</div>
+                    <div class="info-icon"><i class="ti ti-users-group"></i></div>
                     <h3>Управление отрядом</h3>
                     <p>Нанимайте соратников, тренируйте их и развивайте навыки каждого бойца.</p>
                 </div>
+                
+                <!-- Экономика: иконка листа / роста -->
                 <div class="info-card">
-                    <div class="info-icon">🌾</div>
+                    <div class="info-icon"><i class="ti ti-leaf"></i></div>
                     <h3>Экономика</h3>
                     <p>Земледелие, скотоводство, сбор ресурсов и торговля с соседями.</p>
                 </div>
+                
+                <!-- Сюжет: иконка свитка (квесты) -->
                 <div class="info-card">
-                    <div class="info-icon">🗡️</div>
+                    <div class="info-icon"><i class="ti ti-scroll"></i></div>
                     <h3>Сюжет</h3>
                     <p>Освобождайте территории, сражайтесь с бандитами и королевскими стражниками.</p>
                 </div>
+                
+                <!-- Открытый мир: иконка глобуса/карты -->
                 <div class="info-card">
-                    <div class="info-icon">🎮</div>
+                    <div class="info-icon"><i class="ti ti-world"></i></div>
                     <h3>Открытый мир</h3>
                     <p>Исследуйте огромный мир, находите тайники и новые локации.</p>
                 </div>
